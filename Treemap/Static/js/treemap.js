@@ -22,7 +22,7 @@ function tree()
           "translate(" + margin.left + "," + margin.top + ")");
 
   // read json data
-  d3.json("./Resources/raviStockInfo.json").then(function(data)  {
+  d3.json("./Treemap/Resources/raviStockInfo.json").then(function(data)  {
 
     //console.log(data.forEach(vol => vol.Ticker));
       // Give the data to this cluster layout:
@@ -86,14 +86,17 @@ function tree()
           <strong> % Change (in 6 months):</strong> ${(((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100)} %`)
           .style("left", (d3.mouse(this)[0]+ 70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
+
+      
           
       //console.log(d.data.Ticker)
       };
+
       var mouseleave = function(d) 
       {
         Tooltip
           .style("display", "block")
-          .style("opacity", 1) 
+          .style("opacity", 0) 
         d3.select(this)
           .style("stroke", "white")
           .style("opacity", 1)
@@ -109,9 +112,10 @@ function tree()
           .attr('width', function (d) { return d.x1 - d.x0; })
           .attr('height', function (d) { return d.y1 - d.y0; })
           .style("stroke", "white")
-          .on("mouseover", mouseover)
-          .on("mouseleave", mouseleave)
-          .on("mousemove", mousemove)
+          .on("mouseover", mouseover) // rect
+          .on("mouseleave", mouseleave) //rect & the tooltip
+          .on("mousemove", mousemove) //tooltip
+          
           
           .attr("fill", function (d)
           {
@@ -144,27 +148,48 @@ function tree()
               return "#009900";
             }
           });
-    
+      var w = 20,
+      h = 20;
       // and to add the text labels
       svg
         .selectAll("text")
         .data(root.leaves())
         .enter()
         .append("text")
-          .attr("x", function(d){ return d.x0 + 1})    // +10 to adjust position (more right)
-          .attr("y", function(d){ return d.y0+30})    // +20 to adjust position (lower)
-          .text(function(d){ return d.data.Ticker })
-          .attr("font-size", "15px")
+          .attr("x", function(d){ return d.x0 })    // +1 to adjust position (more right)
+          .attr("y", function(d){ return d.y0 + ((d.y1 - d.y0)/2)})    // +30 to adjust position (lower)
+          .text(function(d){ 
+          if ((d.x1- d.x0 < w)|| (d.y1 - d.y0 < h))
+          {
+            return "";
+          }
+          else
+          {
+            return d.data.Ticker;
+          }
+          })
+          .attr("text-anchor", "start")
+          .attr("font-size", "10px")
           .attr("fill", "white")
       svg
         .selectAll("vals")
         .data(root.leaves())
         .enter()
         .append("text")
-          .attr("x", function(d){ return d.x0 + 1})    // +10 to adjust position (more right)
-          .attr("y", function(d){ return d.y0+48})    // +20 to adjust position (lower)
-          .text(function(d){ return Math.round(((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) + Number.EPSILON)*100) / 100 })
-          .attr("font-size", "15px")
+        .attr("text-anchor", "start")
+          .attr("x", function(d){ return d.x0 })    // +1 to adjust position (more right)
+          .attr("y", function(d){ return d.y0 + ((d.y1 - d.y0)/2) + 12})    // +48 to adjust position (lower)
+          .text(function(d){ 
+            if((d.x1 - d.x0 < w) || (d.y1 - d.y0 < h))
+            {
+              return "";
+            }
+            else
+            {
+              return (Math.round(((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) + Number.EPSILON)*100) / 100); 
+            }
+        })
+          .attr("font-size", "10px")
           .attr("fill", "white")
 
       // add title
