@@ -1,6 +1,4 @@
 var treemap = d3.select("#my_dataviz");
-
-
 function cleardata()
 {
      treemap.html("");
@@ -117,13 +115,33 @@ function tree()
           
           .attr("fill", function (d)
           {
-            if ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) < 0)
+            if ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) <= -31)
             {
-              return "red";
+              return "#FF0000";
             }
-            else
+            else if (((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) > -31) && ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) < -22))
             {
-              return "green";
+              return "#CC0000";
+            }
+            else if (((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) > -22) && ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) < -15))
+            {
+              return "#990000";
+            }
+            else if (((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) > -15) && ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) < 0)) 
+            {
+              return "#971616";
+            }
+            else if ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) == 0)
+            {
+              return "#405147";
+            }
+            else if (((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) > 0) && ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) < 4))
+            {
+              return "#006600";
+            }
+            else if ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) > 4)
+            {
+              return "#009900";
             }
           });
     
@@ -136,6 +154,16 @@ function tree()
           .attr("x", function(d){ return d.x0 + 1})    // +10 to adjust position (more right)
           .attr("y", function(d){ return d.y0+30})    // +20 to adjust position (lower)
           .text(function(d){ return d.data.Ticker })
+          .attr("font-size", "15px")
+          .attr("fill", "white")
+      svg
+        .selectAll("vals")
+        .data(root.leaves())
+        .enter()
+        .append("text")
+          .attr("x", function(d){ return d.x0 + 1})    // +10 to adjust position (more right)
+          .attr("y", function(d){ return d.y0+48})    // +20 to adjust position (lower)
+          .text(function(d){ return Math.round(((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) + Number.EPSILON)*100) / 100 })
           .attr("font-size", "15px")
           .attr("fill", "white")
 
