@@ -16,18 +16,6 @@ margin-right: 20px;
     margin-right: 20px;
 }
 
-.kevin { 
-    background: url("leogif.gif") no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
-
-.doug {
-    
-}
-
 
 body{
     background-color: rgb(236, 247, 236);
