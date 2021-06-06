@@ -246,10 +246,10 @@ d3.json("./stockInfo.json").then((d) => {
         document.getElementById('image').style.width='400px';
         document.getElementById('image').style.height='200px';
 
-        document.getElementById('image3').src = 'wordcloudex.jpeg';
+        document.getElementById('image3').src = 'arrow.png';
         document.getElementById('image3').setAttribute("style", "display");
-        document.getElementById('image3').style.width='500px';
-        document.getElementById('image3').style.height='250px';
+        document.getElementById('image3').style.width='400px';
+        document.getElementById('image3').style.height='200px';
     }
     else {
         document.getElementById('image').src = 'sellsellsell.gif';
@@ -257,10 +257,10 @@ d3.json("./stockInfo.json").then((d) => {
         document.getElementById('image').style.width='400px';
         document.getElementById('image').style.height='200px';
 
-        document.getElementById('image3').src = 'wordcloudex.jpeg';
+        document.getElementById('image3').src = 'arrow.png';
         document.getElementById('image3').setAttribute("style", "display");
-        document.getElementById('image3').style.width='500px';
-        document.getElementById('image3').style.height='250px';
+        document.getElementById('image3').style.width='400px';
+        document.getElementById('image3').style.height='200px';
     }
 })
 };
