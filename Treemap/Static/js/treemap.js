@@ -83,7 +83,7 @@ function tree()
           <strong> Highest Price(in 6 months):</strong> ${Math.max(d.data.Hmo1,d.data.Hmo2,d.data.Hmo3,d.data.Hmo4,d.data.Hmo5,d.data.Hmo6)} <br>
           <strong> Lowest Price (in 6 months):</strong> ${Math.min(d.data.Lmo1,d.data.Lmo2,d.data.Lmo3,d.data.Lmo4,d.data.Lmo5,d.data.Lmo6)} <br>
           <strong> Volume:</strong> ${d.data.Vmo6} <br>
-          <strong> % Change (in 6 months):</strong> ${(((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100)} %`)
+          <strong> % Change (in 6 months):</strong> ${Math.round(((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) + Number.EPSILON)*100) / 100} %`)
           .style("left", (d3.mouse(this)[0]+ 70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
 
@@ -186,7 +186,7 @@ function tree()
             }
             else
             {
-              return (Math.round(((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) + Number.EPSILON)*100) / 100); 
+              return (Math.round(((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) + Number.EPSILON)*100) / 100 +"%"); 
             }
         })
           .attr("font-size", "10px")
@@ -203,6 +203,56 @@ function tree()
           .text(function(d){ return d.data.sector })
           .attr("font-size", "19px")
           .attr("fill",  function(d){ return color(d.data.sector)} )
+          .on("click", function(d) {
+            if ((d.data.sector) == "Industrials")
+            {
+              window.location = "./Treemap/html files/Industrials.html";
+            }
+            else if ((d.data.sector) == "Energy")
+            {
+              window.location = "./Treemap/html files/Energy.html";
+            }
+            else if ((d.data.sector) == "Communication Services")
+            {
+              window.location = "./Treemap/html files/CommunicationService.html";
+            }
+            else if ((d.data.sector) == "Consumer Discretionary")
+            {
+              window.location = "./Treemap/html files/ConsumerDiscretionary.html";
+            }
+            else if ((d.data.sector) == "Consumer Staples")
+            {
+              window.location = "./Treemap/html files/ConsumerStaple.html";
+            }
+            else if ((d.data.sector) == "Financials")
+            {
+              window.location = "./Treemap/html files/Financial.html";
+            }
+            else if ((d.data.sector) == "Health Care")
+            {
+              window.location = "./Treemap/html files/HealthCare.html";
+            }
+            else if ((d.data.sector) == "Information Technology")
+            {
+              window.location = "./Treemap/html files/InformationTech.html";
+            }
+            else if ((d.data.sector) == "Materials")
+            {
+              window.location = "./Treemap/html files/Materials.html";
+            }
+            else if ((d.data.sector) == "Real Estate")
+            {
+              window.location = "./Treemap/html files/RealEstate.html";
+            }
+            else if ((d.data.sector) == "Utilities")
+            {
+              window.location = "./Treemap/html files/Utilities.html";
+            }
+            else
+            {
+              window.location = "../../tree_map.html";
+            }
+          })
   });
 };
 tree();

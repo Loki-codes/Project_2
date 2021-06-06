@@ -88,7 +88,7 @@
           <strong> Highest Price(in 6 months):</strong> ${Math.max(d.data.Hmo1,d.data.Hmo2,d.data.Hmo3,d.data.Hmo4,d.data.Hmo5,d.data.Hmo6)} <br>
           <strong> Lowest Price (in 6 months):</strong> ${Math.min(d.data.Lmo1,d.data.Lmo2,d.data.Lmo3,d.data.Lmo4,d.data.Lmo5,d.data.Lmo6)} <br>
           <strong> Volume:</strong> ${d.data.Vmo6} <br>
-          <strong> % Change (in 6 months):</strong> ${(((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100)} %`)
+          <strong> % Change (in 6 months):</strong> ${Math.round(((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) + Number.EPSILON)*100) / 100} %`)
           .style("left", (d3.mouse(this)[0]+ 70) + "px")
           .style("top", (d3.mouse(this)[1]) + "px")
           
@@ -98,7 +98,7 @@
       {
         Tooltip
           .style("display", "block")
-          .style("opacity", 1) 
+          .style("opacity", 0) 
         d3.select(this)
           .style("stroke", "white")
           .style("opacity", 1)
@@ -114,32 +114,84 @@
           .attr('width', function (d) { return d.x1 - d.x0; })
           .attr('height', function (d) { return d.y1 - d.y0; })
           .style("stroke", "white")
-          .on("mouseover", mouseover)
-          .on("mouseleave", mouseleave)
-          .on("mousemove", mousemove)
+          .on("mouseover", mouseover) // rect
+          .on("mouseleave", mouseleave) //rect & the tooltip
+          .on("mousemove", mousemove) //tooltip
+          
           
           .attr("fill", function (d)
           {
-            if ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) < 0)
+            if ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) <= -31)
             {
-              return "red";
+              return "#FF0000";
             }
-            else
+            else if (((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) > -31) && ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) < -22))
             {
-              return "green";
+              return "#CC0000";
+            }
+            else if (((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) > -22) && ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) < -15))
+            {
+              return "#990000";
+            }
+            else if (((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) > -15) && ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) < 0)) 
+            {
+              return "#971616";
+            }
+            else if ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) == 0)
+            {
+              return "#405147";
+            }
+            else if (((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) > 0) && ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) < 4))
+            {
+              return "#006600";
+            }
+            else if ((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) > 4)
+            {
+              return "#009900";
             }
           });
-    
+      var w = 20,
+      h = 20;
       // and to add the text labels
       svg
         .selectAll("text")
         .data(root.leaves())
         .enter()
         .append("text")
-          .attr("x", function(d){ return d.x0 + 1})    // +10 to adjust position (more right)
-          .attr("y", function(d){ return d.y0+30})    // +20 to adjust position (lower)
-          .text(function(d){ return d.data.Ticker })
-          .attr("font-size", "15px")
+          .attr("x", function(d){ return d.x0 })    // +1 to adjust position (more right)
+          .attr("y", function(d){ return d.y0 + ((d.y1 - d.y0)/2)})    // +30 to adjust position (lower)
+          .text(function(d){ 
+          if ((d.x1- d.x0 < w)|| (d.y1 - d.y0 < h))
+          {
+            return "";
+          }
+          else
+          {
+            return d.data.Ticker;
+          }
+          })
+          .attr("text-anchor", "start")
+          .attr("font-size", "10px")
+          .attr("fill", "white")
+      svg
+        .selectAll("vals")
+        .data(root.leaves())
+        .enter()
+        .append("text")
+        .attr("text-anchor", "start")
+          .attr("x", function(d){ return d.x0 })    // +1 to adjust position (more right)
+          .attr("y", function(d){ return d.y0 + ((d.y1 - d.y0)/2) + 12})    // +48 to adjust position (lower)
+          .text(function(d){ 
+            if((d.x1 - d.x0 < w) || (d.y1 - d.y0 < h))
+            {
+              return "";
+            }
+            else
+            {
+              return (Math.round(((((d.data.Cmo6-d.data.Omo1)/d.data.Omo1)*100) + Number.EPSILON)*100) / 100 + "%"); 
+            }
+        })
+          .attr("font-size", "10px")
           .attr("fill", "white")
 
       // add title
@@ -153,6 +205,56 @@
           .text(function(d){ return d.data.sector })
           .attr("font-size", "19px")
           .attr("fill",  function(d){ return color(d.data.sector)} )
+          .on("click", function(d) {
+            if ((d.data.sector) == "Industrials")
+            {
+              window.location = "/html files/Industrials.html";
+            }
+            else if ((d.data.sector) == "Energy")
+            {
+              window.location = "/html files/Energy.html";
+            }
+            else if ((d.data.sector) == "Communication Services")
+            {
+              window.location = "/html files/CommunicationService.html";
+            }
+            else if ((d.data.sector) == "Consumer Discretionary")
+            {
+              window.location = "/html files/ConsumerDiscretionary.html";
+            }
+            else if ((d.data.sector) == "Consumer Staples")
+            {
+              window.location = "/html files/ConsumerStaple.html";
+            }
+            else if ((d.data.sector) == "Financials")
+            {
+              window.location = "/html files/Financial.html";
+            }
+            else if ((d.data.sector) == "Health Care")
+            {
+              window.location = "/html files/HealthCare.html";
+            }
+            else if ((d.data.sector) == "Information Technology")
+            {
+              window.location = "/html files/InformationTech.html";
+            }
+            else if ((d.data.sector) == "Materials")
+            {
+              window.location = "/html files/Materials.html";
+            }
+            else if ((d.data.sector) == "Real Estate")
+            {
+              window.location = "/html files/RealEstate.html";
+            }
+            else if ((d.data.sector) == "Utilities")
+            {
+              window.location = "/html files/Utilities.html";
+            }
+            else
+            {
+              window.location = "../Treemap.html";
+            }
+          })
     })
     </script>
 </body>
