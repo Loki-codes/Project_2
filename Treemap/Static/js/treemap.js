@@ -1,9 +1,13 @@
-var treemap = d3.select("#my_dataviz");
+var treemap = d3.select("#my_dataviz"); //Select the div tag..
+
+// Function to clear the html page...
 function cleardata()
 {
      treemap.html("");
 };
 
+
+// function for the treemap
 function tree()
 {
   cleardata();
@@ -33,22 +37,17 @@ function tree()
         return Math.abs((((d.Cmo6-d.Omo1)/d.Omo1)*100)) ;// Here the size of each leave is given in the 'value' field in input data
       });
       
-      //Math.abs((((d.Cmo6-d.Omo1)/d.Omo1)*100))     Math.abs(((vol["6moC"]-vol["1moO"]))/vol["1moO"])*100}); 
   
       // Then d3.treemap computes the position of each element of the hierarchy
       d3.treemap()
         .size([width, height])
         .padding(8)
         (root)
-
-      var fader = function(color) { return d3.interpolateRgb(color, "#fff")(0.2); }
-
-      var color = d3.scaleOrdinal(d3.schemeCategory20.map(fader))
-
       
-
-      //console.log(myColor(d3.max(root)));
-      var color4 = d3.interpolateRdYlGn(0,1)
+      // color for the sector...
+      var fader = function(color) { return d3.interpolateRgb(color, "#fff")(0.2); };
+      var color = d3.scaleOrdinal(d3.schemeCategory20.map(fader))
+      //var color4 = d3.interpolateRdYlGn(0,1)
 
 
       // create a tooltip
@@ -64,19 +63,22 @@ function tree()
         .style("padding", "10px")
 
       // Three function that change the tooltip when user hover / move / leave a cell
+
+      // on mouse over function...
       var mouseover = function(d) 
       {
         Tooltip
-          .style("opacity", 1)
+          .style("opacity", 1)  // Show the Tooltip
         d3.select(this)
         
-          .style("stroke", "black")
+          .style("stroke", "black") // for the ticker box border...
           .style("opacity", 1)
       };
 
+      // on mouse move function...
       var mousemove = function(d) 
       {
-        Tooltip
+        Tooltip  // Display inside the tooltip block... 
           .html(`<strong> Ticker:</strong> ${d.data.Ticker} <br>
           <strong> Company Name:</strong> ${d.data.name} <br>
           <strong> Sector:</strong> ${d.data.sector} <br> 
@@ -92,14 +94,15 @@ function tree()
       //console.log(d.data.Ticker)
       };
 
+      // on mouseleave function...
       var mouseleave = function(d) 
       {
         Tooltip
           .style("display", "block")
-          .style("opacity", 0) 
+          .style("opacity", 0) //Close the Tooltip outside the Ticker box or Treemap...
         d3.select(this)
           .style("stroke", "white")
-          .style("opacity", 1)
+          .style("opacity", 1)  // for the Ticker box border
       };
       // use this information to add rectangles:
       svg
@@ -148,9 +151,12 @@ function tree()
               return "#009900";
             }
           });
+
+      // w = width and h = height.. to set the text position 
       var w = 20,
       h = 20;
-      // and to add the text labels
+
+      // svg for the text as Ticker ...
       svg
         .selectAll("text")
         .data(root.leaves())
@@ -171,6 +177,8 @@ function tree()
           .attr("text-anchor", "start")
           .attr("font-size", "10px")
           .attr("fill", "white")
+
+      // svg for the text as Percentage change in 6 month time...
       svg
         .selectAll("vals")
         .data(root.leaves())
@@ -192,7 +200,7 @@ function tree()
           .attr("font-size", "10px")
           .attr("fill", "white")
 
-      // add title
+      // svg for the add title as sector ...
       svg
         .selectAll("titles")
         .data(root.descendants().filter(function(d){return d.depth==1}))
@@ -203,6 +211,7 @@ function tree()
           .text(function(d){ return d.data.sector })
           .attr("font-size", "19px")
           .attr("fill",  function(d){ return color(d.data.sector)} )
+          // on click condition for a particular sector view...
           .on("click", function(d) {
             if ((d.data.sector) == "Industrials")
             {
@@ -255,4 +264,6 @@ function tree()
           })
   });
 };
+
+// call the treemap function...
 tree();
