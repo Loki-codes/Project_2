@@ -17,15 +17,7 @@ d3.json("./stockInfo.json").then((d) => {
  
 //setting the stock image on page load
 function init() {
-    document.getElementById('image').src = 'leogif.gif';
-    document.getElementById('image').setAttribute("style", "display");
-    document.getElementById('image').style.width='1000px';
-    document.getElementById('image').style.height='600px';
-
-    document.getElementById('image2').src = 'image.png';
-    document.getElementById('image2').setAttribute("style", "display");
-    document.getElementById('image2').style.width='200px';
-    document.getElementById('image2').style.height='100px';
+    document.body.className = "fullscreen";
 }
 
 //calling function when a stock is chosen
@@ -241,26 +233,30 @@ d3.json("./stockInfo.json").then((d) => {
 
     //plotting and resizing the cooresponding image
     if (prediction>close[5]) {
+        document.body.className = "removeFS";
+        
         document.getElementById('image').src = 'buybuybuy.gif';
         document.getElementById('image').setAttribute("style", "display");
         document.getElementById('image').style.width='400px';
         document.getElementById('image').style.height='200px';
 
-        document.getElementById('image3').src = 'arrow.png';
+        document.getElementById('image3').src = 'wordcloudex.jpeg';
         document.getElementById('image3').setAttribute("style", "display");
-        document.getElementById('image3').style.width='400px';
-        document.getElementById('image3').style.height='200px';
+        document.getElementById('image3').style.width='500px';
+        document.getElementById('image3').style.height='250px';
     }
     else {
+        document.body.className = "removeFS";
+
         document.getElementById('image').src = 'sellsellsell.gif';
         document.getElementById('image').setAttribute("style", "display");
         document.getElementById('image').style.width='400px';
         document.getElementById('image').style.height='200px';
 
-        document.getElementById('image3').src = 'arrow.png';
+        document.getElementById('image3').src = 'wordcloudex.jpeg';
         document.getElementById('image3').setAttribute("style", "display");
-        document.getElementById('image3').style.width='400px';
-        document.getElementById('image3').style.height='200px';
+        document.getElementById('image3').style.width='500px';
+        document.getElementById('image3').style.height='250px';
     }
 })
 };

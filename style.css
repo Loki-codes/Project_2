@@ -22,6 +22,18 @@ body{
     position: relative;
 }
 
+.fullscreen { 
+    background: url("leogif.gif") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.removeFS {
+    
+}
+
 #who-we-are{
     height: 140px;
 width: 140px;

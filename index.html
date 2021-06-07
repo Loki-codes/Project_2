@@ -26,7 +26,7 @@
       <ul class="navbar-nav ml-auto">
 
         <select id="selDataset" onchange="optionChanged(this.value)">
-          <option value="">S&P 500 Stock Companies (select one)</option>
+          <option value="" >S&P 500 Stock Companies (select one)</option>
         </select>
 
         <li class="nav-item dropdown">
@@ -57,71 +57,57 @@
   </nav>
 
 
-
   <!-- Create the overall grid -->
-  <div class="container" style="background-color: rgb(236, 247, 236);">
+  <div class="container">
     <!-- Row0 -->
     <section class="row">
       <div class="col-md-12">
-        <h1 id="main_title">S&P 500 Stock Trend</h1>
+
+        <h1 id="main_title">SPX500 Insights</h1>
+
       </div>
-      <section>
-
-        <!-- Row1 buy/sell gif target -->
-        <div class="col-md-12" id="row0-gif">
-          <img src="" id="image" />
-          <img src="" id="image3" />
-          <p></p>
-        </div>
-
-        <!-- monthly predictor-->
-        <div class="row">
 
 
-          <div class="col-md-12">
-            <div id="predictor"></div>
-          </div>
-        </div>
-        <p></p>
-
-        <!-- candlestick & volume-->
-        <div class="row">
-
-          <div class="col-md-6">
-            <div id="candlestick"></div>
-          </div>
-
-          <div class="col-md-6">
-            <div id="bar"></div>
-          </div>
-
-        </div>
-        <p></p>
-
-        <!-- pie predictor-->
-        <div class="row">
-          
-          <div class="col-md-12">
-            <div id="pie"></div>
-          </div>
-          
-        </div>
-        <p></p>
-
-        <div class="row">
-          <div class="col-md-12">
-            <div id="static"></div>
-          </div>
-        </div>
-
+    
+    <section>
+    <div class="col-md-12">
+      <img src="" id="image" />
+      <img src="" id="image3" />
+    </div>
   </div>
-
+  <div class="row">
+    <div class="col-md-12">
+      <div id="candlestick"></div>
+    </div>
+  <p>
+    <div class="col-md-12">
+      <div id="bar"></div>
+    </div>
+  </p>
+  <p>
+    <div class="col-md-12">
+      <div id="predictor"></div>
+    </div>
+  </p>
+  <p>
+    <div class="col-md-12">
+      <div id="pie"></div>
+    </div>
+  </p>
+  <p>
+    <div class="col-md-12">
+      <div id="static"></div>
+    </div>
+  </p>
+  
   </div>
+</div>
 
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="PlotlyCandle.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="PlotlyCandle.js"></script>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
