@@ -26,7 +26,7 @@ function tree()
           "translate(" + margin.left + "," + margin.top + ")");
 
   // read json data
-  d3.json("./Treemap/Resources/raviStockInfo.json").then(function(data)  {
+  d3.json("/Treemap/Resources/raviStockInfo.json").then(function(data)  {
 
     //console.log(data.forEach(vol => vol.Ticker));
       // Give the data to this cluster layout:
@@ -215,51 +215,51 @@ function tree()
           .on("click", function(d) {
             if ((d.data.sector) == "Industrials")
             {
-              window.location = "./Treemap/html files/Industrials.html";
+              window.location = "../Treemap/html files/Industrials.html";
             }
             else if ((d.data.sector) == "Energy")
             {
-              window.location = "./Treemap/html files/Energy.html";
+              window.location = "../Treemap/html files/Energy.html";
             }
             else if ((d.data.sector) == "Communication Services")
             {
-              window.location = "./Treemap/html files/CommunicationService.html";
+              window.location = "../Treemap/html files/CommunicationService.html";
             }
             else if ((d.data.sector) == "Consumer Discretionary")
             {
-              window.location = "./Treemap/html files/ConsumerDiscretionary.html";
+              window.location = "../Treemap/html files/ConsumerDiscretionary.html";
             }
             else if ((d.data.sector) == "Consumer Staples")
             {
-              window.location = "./Treemap/html files/ConsumerStaple.html";
+              window.location = "../Treemap/html files/ConsumerStaple.html";
             }
             else if ((d.data.sector) == "Financials")
             {
-              window.location = "./Treemap/html files/Financial.html";
+              window.location = "../Treemap/html files/Financial.html";
             }
             else if ((d.data.sector) == "Health Care")
             {
-              window.location = "./Treemap/html files/HealthCare.html";
+              window.location = "../Treemap/html files/HealthCare.html";
             }
             else if ((d.data.sector) == "Information Technology")
             {
-              window.location = "./Treemap/html files/InformationTech.html";
+              window.location = "../Treemap/html files/InformationTech.html";
             }
             else if ((d.data.sector) == "Materials")
             {
-              window.location = "./Treemap/html files/Materials.html";
+              window.location = "../Treemap/html files/Materials.html";
             }
             else if ((d.data.sector) == "Real Estate")
             {
-              window.location = "./Treemap/html files/RealEstate.html";
+              window.location = "../Treemap/html files/RealEstate.html";
             }
             else if ((d.data.sector) == "Utilities")
             {
-              window.location = "./Treemap/html files/Utilities.html";
+              window.location = "../Treemap/html files/Utilities.html";
             }
             else
             {
-              window.location = "../../tree_map.html";
+              window.location = "../../html_files/tree_map.html";
             }
           })
   });

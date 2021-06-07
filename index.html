@@ -3,17 +3,17 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" href="Resources/logo_gs_black.png" />
+  <link rel="icon" type="image/png" href="./Resources/logo_gs_black.png" />
   <title>Greener Stocks</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./Static/css/style.css">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
 
-    <a class="navbar-brand" href="index.html"><img src="Resources\logo_gs_color.png" id="stock_logo"
+    <a class="navbar-brand" href="./index.html"><img src="./Resources/logo_gs_color.png" id="stock_logo"
         alt="Greener Stocks"></a>
 
     <!-- Sintax to create the hamburger -->
@@ -35,22 +35,22 @@
             All Charts
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="candlestick.html">Candlestick</a>
-            <a class="dropdown-item" href="predictions.html">Predictions</a>
-            <a class="dropdown-item" href="predictions_bc.html">Predictions by % Change</a>
+            <a class="dropdown-item" href="./html_files/candlestick.html">Candlestick</a>
+            <a class="dropdown-item" href="./html_files/predictions.html">Predictions</a>
+            <a class="dropdown-item" href="./html_files/predictions_bc.html">Predictions by % Change</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="tree_map.html">Tree Map</a>
+          <a class="nav-link" href="./html_files/tree_map.html">Tree Map</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="word_cloud.html">News WC</a>
+          <a class="nav-link" href="./html_files/word_cloud.html">News WC</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="data.html">Data</a>
+          <a class="nav-link" href="./html_files/data.html">Data</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="who_we_are.html">Who we are</a>
+          <a class="nav-link" href="./html_files/who_we_are.html">Who we are</a>
         </li>
       </ul>
     </div>
@@ -76,21 +76,21 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div id="candlestick"></div>
     </div>
   <p>
-    <div class="col-md-12">
-      <div id="bar"></div>
-    </div>
-  </p>
-  <p>
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div id="predictor"></div>
     </div>
   </p>
   <p>
-    <div class="col-md-12">
+    <div class="col-md-6">
+      <div id="bar"></div>
+    </div>
+  </p>
+  <p>
+    <div class="col-md-6">
       <div id="pie"></div>
     </div>
   </p>
@@ -107,7 +107,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-<script src="PlotlyCandle.js"></script>
+<script src="/Static/js/PlotlyCandle.js"></script>
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

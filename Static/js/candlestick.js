@@ -1,5 +1,5 @@
 // setting the dropdown
-d3.json("./stockInfo.json").then((d) => {
+d3.json("/Static/data/stockInfo.json").then((d) => {
     var tickerNames = {}
     
     for (var i=0;i<d.length;i++) {
@@ -16,19 +16,14 @@ d3.json("./stockInfo.json").then((d) => {
 });
  
 //setting the stock image on page load
-function init() {
-    d3.select("h5").html("")
-}
+function init() {}
 
 //calling function when a stock is chosen
 d3.selectAll("#selDataset").on("change", optionChanged);
 
-
-
 //defining function for change, json call, for plots
 function optionChanged(sample) {
-    
-d3.json("./stockInfo.json").then((d) => {
+d3.json("/Static/data/stockInfo.json").then((d) => {
     var filterArray = d.filter(sampleObject=>sampleObject.Ticker==sample);
     var stockData = filterArray[0];
     console.log(filterArray)
@@ -38,6 +33,12 @@ d3.json("./stockInfo.json").then((d) => {
     var sd = stockData;
     var _6Months = [sk[6],sk[11],sk[16],sk[21],sk[26],sk[31]];
     var close = [sd.Cmo1,sd.Cmo2,sd.Cmo3,sd.Cmo4,sd.Cmo5,sd.Cmo6];
+    var high = [sd.Hmo1,sd.Hmo2,sd.Hmo3,sd.Hmo4,sd.Hmo5,sd.Hmo6];
+    var low = [sd.Lmo1,sd.Lmo2,sd.Lmo3,sd.Lmo4,sd.Lmo5,sd.Lmo6];
+    var open = [sd.Omo1,sd.Omo2,sd.Omo3,sd.Omo4,sd.Omo5,sd.Omo6];
+    var volume = [sd.Vmo1,sd.Vmo2,sd.Vmo3,sd.Vmo4,sd.Vmo5,sd.Vmo6];
+    var _6MonVolume = [sk[7],sk[12],sk[17],sk[22],sk[27],sk[32]];
+    
     
     //predict
     var predictAxis = _6Months;
@@ -92,40 +93,28 @@ d3.json("./stockInfo.json").then((d) => {
     var month7 = close;
     month7.push(prediction);
 
-    //PREDICTION LINES
-    var trace4 = {x:predictAxis,y:predict1,width: .2,type: "line",name:"6-Month prediction"};
-    var trace5 = {x:predictAxis,y:predict2,width: .2,type: "line",name:"5-Month prediction"};
-    var trace6 = {x:predictAxis,y:predict3,width: .2,type: "line",name:"4-Month prediction"};
-    var trace7 = {x:predictAxis,y:predict4,width: .2,type: "line",name:"3-Month prediction"};
-    var trace8 = {x:predictAxis,y:predict5,width: .2,type: "line",name:"2-Month prediction"};
+    //CANDLESTICK
+    var trace1 = {type: "candlestick",x: _6Months,high: high,low: low,open: open,close: close,name:"closing"};
 
-    
-    var dataPredict = [trace4, trace5, trace6, trace7, trace8];
-    
+    //CANDLESTICK - OHLC
+    var trace2 = {x:_6Months,y:close,width: .5,type: "line",name:"closing"};
 
-    //PREDICTION LINES
-    var layOutPredict = {title: `${stockData.Ticker} Month by Month prediction`,xaxis: {title: "Month Closing"},yaxis: {title: "Volume"},height: 500,width: 1110};
+    //BAR
+    var trace3 = {x:_6MonVolume,y:volume,width: .5,type: "bar"};
+
+    var dataCandle = [trace1, trace2];
+    var dataBar = [trace3];
+    
+    //CANDLESTICK - OHLC
+    var layOut = {title: `${stockData.Ticker} Closing Price`,xaxis: {title: "Month Closing"},yaxis: {title: "Closing Price",autorange: true,type: "linear"},height: 500,width: 1110};
+
+    //BAR
+    var layOutBar = {title: `${stockData.Ticker} Volume`,xaxis: {title: "Month Closing"},yaxis: {title: "Volume"},height: 500,width: 1110};
 
     //plotting the dynamic plots
-    Plotly.newPlot("predictor", dataPredict, layOutPredict);
+    Plotly.newPlot("candlestick", dataCandle, layOut);
+    Plotly.newPlot("bar", dataBar, layOutBar);
 
-    d3.select("#reset").html("")
-
-    var pointChange = prediction-month7[5]
-    var pChange = pointChange/month7[5]
-    var prcntChange = pChange*100
-    d3.select("#reset")
-    .append("h5")
-    .text(`Our predicted 7th Month Closing Price is ${parseFloat(prediction.toFixed(4))} which is a ${parseFloat(pointChange.toFixed(4))} point difference from the 6th Month (%${parseFloat(prcntChange.toFixed(2))})`)
-
-    
-    
-    
 })
-
-
 };
-
-
-
 init();

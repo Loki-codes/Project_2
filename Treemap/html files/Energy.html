@@ -7,7 +7,7 @@
   <title>Greener Stocks</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="../../Static/css/style.css">
 </head>
 
 <body>
@@ -32,22 +32,22 @@
             
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="../../candlestick.html">Candlestick</a>
-            <a class="dropdown-item" href="../../predictions.html">Predictions</a>
-            <a class="dropdown-item" href="../../predictions_bc.html">Predictions by % Change</a>
+            <a class="dropdown-item" href="../../html_files/candlestick.html">Candlestick</a>
+            <a class="dropdown-item" href="../../html_files/predictions.html">Predictions</a>
+            <a class="dropdown-item" href="../../html_files/predictions_bc.html">Predictions by % Change</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../tree_map.html">Tree Map</a>
+          <a class="nav-link" href="../../html_files/tree_map.html">Tree Map</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../word_cloud.html">News WC</a>
+          <a class="nav-link" href="../../html_files/word_cloud.html">News WC</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../data.html">Data</a>
+          <a class="nav-link" href="../../html_files/data.html">Data</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../who_we_are.html">Who we are</a>
+          <a class="nav-link" href="../../html_files/who_we_are.html">Who we are</a>
         </li>
       </ul>
     </div>
@@ -97,7 +97,7 @@
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-<script src = "./Treemap/Static/js/treemap.js"></script>
+<!-- <script src = "/Treemap/Static/js/treemap.js"></script> -->
 
 <script src="https://d3js.org/d3.v4.js"></script>
 <script src="https://d3js.org/d3-color.v2.min.js"></script>
@@ -297,7 +297,7 @@
           .attr("font-size", "19px")
           .attr("fill",  function(d){ return color(d.data.sector)} )
           .on("click", function() {
-           window.location = "../../tree_map.html";
+           window.location = "../../html_files/tree_map.html";
           })
     })
     </script>

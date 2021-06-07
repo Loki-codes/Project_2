@@ -3,17 +3,17 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" type="image/png" href="Resources/logo_gs_black.png" />
+  <link rel="icon" type="image/png" href="../Resources/logo_gs_black.png" />
   <title>Greener Stocks</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../Static/css/style.css">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-white">
 
-    <a class="navbar-brand" href="index.html"><img src="Resources\logo_gs_color.png" id="stock_logo"
+    <a class="navbar-brand" href="../index.html"><img src="../Resources/logo_gs_color.png" id="stock_logo"
         alt="Greener Stocks"></a>
 
     <!-- Sintax to create the hamburger -->
@@ -24,12 +24,6 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
-
-        <li>
-          <select id="selDataset" onchange="optionChanged(this.value)">
-            <option value="" >S&P 500 Stock Companies (select one)</option>
-          </select>
-        </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -60,25 +54,18 @@
 
 
 
-   <!-- Create the overall grid -->
-   <div class="container" style="background-color: rgb(236, 247, 236);">
+  <!-- Create the overall grid -->
+  <div class="container" style="background-color: rgb(236, 247, 236);">
     <!-- Row0 -->
     <section class="row">
       <div class="col-md-12">
-        <h1 id="main_title">Predictions by % Change</h1>
-        <p>This shows the percentage change from the 6th month(current) closing and our predicted 7th month closing.</p>
+        <h1 id="main_title">Latest News - Click on a word for more </h1>
+        <img src="../Resources/Fig1.jpg" id="word_cloud" alt="Word Cloud News">
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
 
-        <div class="row">
-          <div class="col-md-12">
-            <div id="static"></div>
-          </div>
-        <p>
-          <div class="col-md-12">
-            <div id="pie"></div>
-          </div>
-        </p>
-        </div>
       </div>
+
+
     </section>
 
 
@@ -86,10 +73,6 @@
 
   </div>
 
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  <script src="predictions_bc.js"></script>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
