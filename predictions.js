@@ -16,13 +16,18 @@ d3.json("./stockInfo.json").then((d) => {
 });
  
 //setting the stock image on page load
-function init() {}
+function init() {
+    d3.select("h5").html("")
+}
 
 //calling function when a stock is chosen
 d3.selectAll("#selDataset").on("change", optionChanged);
 
+
+
 //defining function for change, json call, for plots
 function optionChanged(sample) {
+    
 d3.json("./stockInfo.json").then((d) => {
     var filterArray = d.filter(sampleObject=>sampleObject.Ticker==sample);
     var stockData = filterArray[0];
@@ -103,8 +108,24 @@ d3.json("./stockInfo.json").then((d) => {
 
     //plotting the dynamic plots
     Plotly.newPlot("predictor", dataPredict, layOutPredict);
+
+    d3.select("#reset").html("")
+
+    var pointChange = prediction-month7[5]
+    var pChange = pointChange/month7[5]
+    var prcntChange = pChange*100
+    d3.select("#reset")
+    .append("h5")
+    .text(`Our predicted 7th Month Closing Price is ${parseFloat(prediction.toFixed(4))} which is a ${parseFloat(pointChange.toFixed(4))} point difference from the 6th Month (%${parseFloat(prcntChange.toFixed(2))})`)
+
+    
     
     
 })
+
+
 };
+
+
+
 init();
