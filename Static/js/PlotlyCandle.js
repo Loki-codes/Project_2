@@ -235,12 +235,12 @@ d3.json("https://ksheekey.github.io/Greener-Stocks/Static/data/stockInfo.json").
     if (prediction>close[5]) {
         document.body.className = "removeFS";
         
-        document.getElementById('image').src = 'Resources/buybuybuy.gif';
+        document.getElementById('image').src = '/Resources/buybuybuy.gif';
         document.getElementById('image').setAttribute("style", "display");
         document.getElementById('image').style.width='400px';
         document.getElementById('image').style.height='200px';
 
-        document.getElementById('image3').src = 'Resources/arrow.png';
+        document.getElementById('image3').src = '/Resources/arrow.png';
         document.getElementById('image3').setAttribute("style", "display");
         document.getElementById('image3').style.width='400px';
         document.getElementById('image3').style.height='200px';
@@ -248,12 +248,12 @@ d3.json("https://ksheekey.github.io/Greener-Stocks/Static/data/stockInfo.json").
     else {
         document.body.className = "removeFS";
 
-        document.getElementById('image').src = 'Resources/sellsellsell.gif';
+        document.getElementById('image').src = '/Resources/sellsellsell.gif';
         document.getElementById('image').setAttribute("style", "display");
         document.getElementById('image').style.width='400px';
         document.getElementById('image').style.height='200px';
 
-        document.getElementById('image3').src = 'Resources/arrow.png';
+        document.getElementById('image3').src = '/Resources/arrow.png';
         document.getElementById('image3').setAttribute("style", "display");
         document.getElementById('image3').style.width='400px';
         document.getElementById('image3').style.height='200px';
