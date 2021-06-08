@@ -1,5 +1,5 @@
 // setting the dropdown
-d3.json("/Static/data/stockInfo.json").then((d) => {
+d3.json("https://ksheekey.github.io/Greener-Stocks/Static/data/stockInfo.json").then((d) => {
     var tickerNames = {}
     
     for (var i=0;i<d.length;i++) {
@@ -18,7 +18,7 @@ d3.json("/Static/data/stockInfo.json").then((d) => {
  
 //setting the stock image on page load
 function init() {
-    d3.json("/Static/data/stockInfo.json").then((d) => {
+    d3.json("https://ksheekey.github.io/Greener-Stocks/Static/data/stockInfo.json").then((d) => {
         var ticker = []
         var barPercent = []
     
@@ -126,7 +126,7 @@ d3.selectAll("#selDataset").on("change", optionChanged);
 
 //defining function for change, json call, for plots
 function optionChanged(sample) {
-d3.json("/Static/data/stockInfo.json").then((d) => {
+d3.json("https://ksheekey.github.io/Greener-Stocks/Static/data/stockInfo.json").then((d) => {
     var filterArray = d.filter(sampleObject=>sampleObject.Ticker==sample);
     var stockData = filterArray[0];
     var ticker = []

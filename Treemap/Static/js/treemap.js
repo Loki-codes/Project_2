@@ -26,7 +26,7 @@ function tree()
           "translate(" + margin.left + "," + margin.top + ")");
 
   // read json data
-  d3.json("/Treemap/Resources/raviStockInfo.json").then(function(data)  {
+  d3.json("https://ksheekey.github.io/Greener-Stocks/Treemap/Resources/raviStockInfo.json").then(function(data)  {
 
     //console.log(data.forEach(vol => vol.Ticker));
       // Give the data to this cluster layout:

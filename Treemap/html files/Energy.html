@@ -122,7 +122,7 @@
             "translate(" + margin.left + "," + margin.top + ")");
     
     // read json data
-    d3.json("../Resources/Energy.json", function(data) {
+    d3.json("https://ksheekey.github.io/Greener-Stocks/Treemap/Resources/Energy.json", function(data) {
       //console.log(data.forEach(vol => vol.Ticker));
       // Give the data to this cluster layout:
       var root = d3.hierarchy(data)
