@@ -7,33 +7,21 @@ Matt brown
 Meriane Franco
 Ravi Patel
 
-Project Proposal
-Data: Stock data for the SPX 500
-Dashboard: 
-•	Stock Momentum
-•	Chart to Compare performance
-•	Plotly (dropdown, restyle)
-•	Filter/slider for the dates 
-•	Testing different pattern or metrics for predicting stock performance.
-Bonus:
-•	Custom chart 
+Greener stocks
 
-Project Plan
-Activity	Team player	Day1 – 5/22	Day2 – 5/25	Day3 – 5/27	Day4 – 6/1	Day5 – 6/3	Day6 – 6/5	Day7 – 6/8
-Project Manager	Kyle							Presentation
-Grab data 	Kyle							
-Github set up	Kyle							
-Division of charts 	All							
-Drop down 	Matt/Ravi							
-Voice of Customer	Kyle							
-Check if all requirements are done	All					X		
-Dashboard Design Idea	Kyle							
-Html	Team – Meriane/Kevin							
-Style	Kevin/Meriane							
-Project Plan Update	Meriane							
-Custom chart* Bonus	Matt		
+  This project was our attempt at importing important information concerning the S&P 500 and using that information to assist anyone looking to learn mora about the 
+current and possibly future status of stock prices.
 
-References:
-Amazon Candlestick Patterns (AMZN) - Investing.com
-https://www.anychart.com/products/anystock/overview/
-Quandl Documentation
+*The home page is meant to be a comfortable place for our end users as they look at both stock specific charts and also charts that present information concerning the entire s&p 500.
+
+*Our drop down menue allows for a closer look at all chart we use in the home page.
+
+* The Tree Map shows the entire S&P 500. Green means an increase in price over the last 6 months and red shows a decrease. The larger the change the larger the squares. 
+
+*The Word Map allows a quick view into the news connected with the stock you wish to choose. Once the Word Map is up click an interesting word and you will find articles popping up below the Word Map. 
+
+*Data is a simple page holding all of the data involved in our project. Ferel free to scrape the information.
+
+*Come meet the team at the Who We Are page.
+
+Thank_you for your time and please reach out with any questions. 
